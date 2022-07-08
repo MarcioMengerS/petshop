@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Petshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="index :: menu" ></div>
+    <!--<div th:insert="~{index :: menu}" ></div>
+    <div th:include="~{index :: menu}" ></div>-->
+    <form class="container p-3 mb-2 bg-dark text-white" action="api/clientes" method="post">
+        <h2>Formulário para Cadastro de Cliente</h2>
+        <div class="row">
+            <div class="form-group col-md-6">
+              <label for="inputName">Nome</label>
+              <input type="text" name="nome" class="form-control" id="nome">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail">Email</label>
+              <input type="email" name="email" class="form-control" id="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="inputCpf">CPF</label>
+                <input type="number" name="cpf" class="form-control" id="cpf">
+              </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Endereço</label>
+                <input type="text" name="nomeRua" class="form-control" id="nomeRua">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputNumber">Número</label>
+                <input type="number"  name="numero" class="form-control" id="numero">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="inputDistrict">Bairro</label>
+                <input type="text" name="bairro" class="form-control" id="bairro">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Cidade</label>
+                <input type="text" name="cidade" class="form-control" id="cidade">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputCEP">CEP</label>
+              <input type="text" name="cep" class="form-control" id="cep">
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button type="button" class="btn btn-warning">Limpar Campos</button>
+            </div>
+        </div>
+    </form>
+    <h3>Hello <span th:text="${nome}"></span></h3>
+       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
