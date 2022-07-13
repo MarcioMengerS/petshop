@@ -35,4 +35,7 @@ public class ClienteService {
     public void removerPorId(Long id){
         clienteRepository.deleteById(id);
     }
+    public void removerObj(Cliente cliente){
+        clienteRepository.delete(cliente);
+    }
 }
