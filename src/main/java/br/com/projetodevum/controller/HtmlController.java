@@ -48,7 +48,6 @@ public class HtmlController {
             throw new IllegalArgumentException("pessoa não existe");
         }
         model.addAttribute("cli", clienteOpt.get());
-        System.out.println("Classe..............................................."+model);
         return "rh/index2";
     }
 

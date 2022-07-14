@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Petshop</title>
 </head>
 <body>
     <form action="#" th:action="@{/rh/clientes/salvar}" th:object="${cli}" method="POST">
-        <input type="hidden" id="id" th:field="*{id}">
+        <!--Fundamental trazer o id-cliente para atualização-->
+        <input type="hidden" id="id" th:field="*{id}"><br>
         <label for="nome">Nome:</label>
         <input type="text" th:field="*{nome}"><br>
         <label for="nome">email:</label>
         <input type="text" th:field="*{email}"><br>
         <label for="nome">CPF:</label>
         <input type="text" th:field="*{cpf}"><br>
+        <!--Fundamental trazer o id-endereço para atualização-->
+        <input type="hidden" id="id" th:field="*{endereco.id}"><br>
         <label for="nome">Endereco:</label>
         <input type="text" th:field="*{endereco.nomeRua}"><br>
         <label for="nome">Número:</label>

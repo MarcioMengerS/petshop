@@ -25,7 +25,7 @@ public class Cliente implements Serializable{
     private static final long serialVersionUID =1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String nome;
@@ -33,6 +33,6 @@ public class Cliente implements Serializable{
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_endereco_id", referencedColumnName = "id")
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 }
