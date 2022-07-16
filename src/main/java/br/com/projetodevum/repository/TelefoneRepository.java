@@ -5,9 +5,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.projetodevum.entity.Cliente;
+import br.com.projetodevum.entity.Telefone;
 
 //Interface da classe Jparepository
 @Repository
 @Transactional
-public interface ClienteRepository extends JpaRepository <Cliente, Long>{
+public interface TelefoneRepository extends JpaRepository<Telefone, Long>{
+    Iterable<Telefone> findByCliente(Cliente cliente);
 }

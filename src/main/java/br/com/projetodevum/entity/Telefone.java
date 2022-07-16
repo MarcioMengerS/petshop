@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="phone")
+@Table
 public class Telefone {
 
     @Id
@@ -24,4 +25,7 @@ public class Telefone {
     private String tipo;
     private byte ddd;
     private int numero;
+
+    @ManyToOne
+    private Cliente cliente;
 }

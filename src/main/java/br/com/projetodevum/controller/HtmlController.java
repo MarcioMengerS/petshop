@@ -11,14 +11,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.projetodevum.entity.Cliente;
+import br.com.projetodevum.entity.Telefone;
+import br.com.projetodevum.repository.TelefoneRepository;
 import br.com.projetodevum.service.ClienteService;
+import br.com.projetodevum.service.TelefoneService;
 
 @Controller
 public class HtmlController {
     @Autowired
     private ClienteService cs;
+
+    @Autowired
+    private TelefoneService tels;
+
+    @Autowired
+    private TelefoneRepository tr;
     
     //Método listar clients
     @RequestMapping(path = "/rh/clientes", method = RequestMethod.GET)
@@ -60,5 +70,28 @@ public class HtmlController {
         }
         cs.removerObj(clienteOpt.get());
         return "redirect:/rh/clientes";
+    }
+
+    //Método que mostra detalhes do cliente
+    @RequestMapping(path="/{id}", method = RequestMethod.GET)
+    public ModelAndView detalhesCliente(@PathVariable ("id") Long id){
+        Optional<Cliente> clienteOpt = cs.buscarPorId(id);
+        ModelAndView mv =new ModelAndView("rh/detalhesCliente");
+        mv.addObject("clienteId", clienteOpt.get());
+        //Busca telefone de um cliente específico
+
+        Iterable<Telefone> telefones = tr.findByCliente(clienteOpt.get());
+        mv.addObject("listaTelefones", telefones);
+
+        return mv;
+    }
+    
+    //Método de cadastro de Telefone e mostra detalhes do cliente
+    @RequestMapping(path="{id}", method = RequestMethod.POST)
+    public String detalhesClientePost(@PathVariable ("id") Long id, Telefone telefone){
+        Optional<Cliente> clienteOpt = cs.buscarPorId(id);
+        telefone.setCliente(clienteOpt.get());
+        tels.salvar(telefone);
+        return "redirect:/{id}";
     }
 }

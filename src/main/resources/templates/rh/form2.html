@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>documento teste</title>
+    <title>Petshop Lista</title>
 </head>
 <body>
     <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a><br>
@@ -21,21 +21,26 @@
                 <th>Bairro</th>
                 <th>Cidade</th>
                 <th>CEP</th>
+                <th>Telefone</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="cliente : ${listaPessoas}" th:object="${cliente}">
                 <td th:text="${cliente.getId()}"></td>
-                <td th:text="${cliente.getNome()}"></td>
+                <td><a th:href="${(#mvc.url('HC#detalhesCliente').arg(0,cliente.id)).build()}"><span th:text="${cliente.getNome()}"></span></a></td>
                 <td th:text="${cliente.getCpf()}"></td>
                 <td th:text="${cliente.getEmail()}"></td>
+
                 <td th:text="${cliente.endereco.id}"></td>
                 <td th:text="${cliente.endereco.nomeRua}"></td>
                 <td th:text="${cliente.endereco.numero}"></td>
                 <td th:text="${cliente.endereco.bairro}"></td>
                 <td th:text="${cliente.endereco.cidade}"></td>
                 <td th:text="${cliente.endereco.cep}"></td>
+
+                <td th:text="${telefone?.tipo}"></td>
+
                 <td>
                     <a th:href="@{/rh/clientes/excluir/{id}(id=${cliente.id})}">Excluir</a>
                     <a th:href="@{/rh/clientes/atualizar/{id}(id=${cliente.id})}">Atualizar</a>

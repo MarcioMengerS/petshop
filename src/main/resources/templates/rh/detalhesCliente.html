@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop Index</title>
+</head>
+<body>
+    <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a> / <a th:href="@{/rh/clientes}">Lista de Clientes</a><br>
+    <div th:each="cliente : ${clienteId}" th:object="${cliente}">
+        <div class="row">
+            <p>Nome: <span th:text="${cliente.getNome()}"></span></p>
+            <p>Email: <span th:text="${cliente.getEmail()}"></span></p>
+            <p>CPF: <span th:text="${cliente.getCpf()}"></span></p>
+        </div>
+        <form method="post">
+            Tipo:<input type="text" value="" name="tipo">
+            DDD: <input type="number" value="" name="ddd">
+            Numero: <input type="number" value="" name="numero">
+            <button type="submit">Incluir Telefone</button>
+        </form>
+    </div>
+    <div class="container" th:each="telefones : ${listaTelefones}">
+        <div class="row">
+            <p>ID para teste: <span th:text="${telefones.getId()}"></span></p>
+            <p>Tipo: <span th:text="${telefones.getTipo()}"></span></p>
+            <!--<p>DDD: <span th:text="${telefones.getDdd()}"></span></p>-->
+            <p>Número: (<span th:text="${telefones.getDdd()}"></span>) <span th:text="${telefones.getNumero()}"></span></p>
+        </div>
+    </div>
+</body>
+</html>
