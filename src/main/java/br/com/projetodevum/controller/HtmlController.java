@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.projetodevum.entity.Cliente;
 import br.com.projetodevum.entity.Telefone;
-import br.com.projetodevum.repository.TelefoneRepository;
 import br.com.projetodevum.service.ClienteService;
 import br.com.projetodevum.service.TelefoneService;
 
@@ -26,12 +25,10 @@ public class HtmlController {
 
     @Autowired
     private TelefoneService tels;
-
-    @Autowired
-    private TelefoneRepository tr;
     
-    //Método listar clients
-    @RequestMapping(path = "/rh/clientes", method = RequestMethod.GET)
+    //Método listar clientes
+    //@RequestMapping(path = "/rh/clientes", method = RequestMethod.GET)
+    @GetMapping("/rh/clientes")
     public String listarTodos(Model model){
         model.addAttribute("listaPessoas", cs.listarClientes());
         return "rh/form2";
@@ -63,6 +60,7 @@ public class HtmlController {
 
     //Método que exclui cliente
     @GetMapping("/rh/clientes/excluir/{id}")
+    //@DeleteMapping("/rh/clientes/excluir/{id}") - Não aceita o verbo delete
     public String excluir(@PathVariable("id") Long id) {
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         if(clienteOpt.isEmpty()){
@@ -79,16 +77,16 @@ public class HtmlController {
         ModelAndView mv =new ModelAndView("rh/detalhesCliente");
         mv.addObject("clienteId", clienteOpt.get());
         //Busca telefone de um cliente específico
-
-        Iterable<Telefone> telefones = tr.findByCliente(clienteOpt.get());
+        Iterable<Telefone> telefones = tels.buscarTelClientes(clienteOpt.get());
         mv.addObject("listaTelefones", telefones);
 
         return mv;
     }
-    
+
     //Método de cadastro de Telefone e mostra detalhes do cliente
+    //@RequestMapping(path="{id}", method = RequestMethod.POST)
     @RequestMapping(path="{id}", method = RequestMethod.POST)
-    public String detalhesClientePost(@PathVariable ("id") Long id, Telefone telefone){
+    public String cadastroTelefonePorId(@PathVariable ("id") Long id, Telefone telefone){
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         telefone.setCliente(clienteOpt.get());
         tels.salvar(telefone);

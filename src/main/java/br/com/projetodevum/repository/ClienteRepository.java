@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.projetodevum.entity.Cliente;
 
-//Interface da classe Jparepository
+//Interface que estende a classe JpaRepository
 @Repository
 @Transactional
 public interface ClienteRepository extends JpaRepository <Cliente, Long>{

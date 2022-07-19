@@ -42,4 +42,8 @@ public class TelefoneService {
     public Iterable<Telefone> buscarTelefonesCliente(Cliente cliente){
         return telefoneRepository.findAll();
     }
+    public Iterable<Telefone> buscarTelClientes(Cliente cliente){
+        return telefoneRepository.findByCliente(cliente);
+    }
+
 }

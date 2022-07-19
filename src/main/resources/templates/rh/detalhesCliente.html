@@ -21,13 +21,22 @@
             <button type="submit">Incluir Telefone</button>
         </form>
     </div>
-    <div class="container" th:each="telefones : ${listaTelefones}">
-        <div class="row">
-            <p>ID para teste: <span th:text="${telefones.getId()}"></span></p>
-            <p>Tipo: <span th:text="${telefones.getTipo()}"></span></p>
-            <!--<p>DDD: <span th:text="${telefones.getDdd()}"></span></p>-->
-            <p>Número: (<span th:text="${telefones.getDdd()}"></span>) <span th:text="${telefones.getNumero()}"></span></p>
-        </div>
-    </div>
+ <!--Tabela que apresenta todos os telefones do cliente específico-->
+    <table width="467" border="1px">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Número</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="telefones:${listaTelefones}">
+                <td th:text="${telefones.getTipo()}"></td>
+                <td>(<span th:text="${telefones.getDdd()}"></span>) <span th:text="${telefones.getNumero()}"></span></td>
+                <td><a th:href="@{/telefone/excluir/{id}(id=${telefones.getId()})}">Excluir</a></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
