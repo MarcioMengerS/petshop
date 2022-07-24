@@ -1,5 +1,7 @@
 package br.com.projetodevum.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +18,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table
-public class Telefone {
+//adicionado implements serializable
+public class Telefone implements Serializable{
+    //adicionado constante serialVersionUID
+    private static final long serialVersionUID =1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //utilização de AUTO para não sobrescrever telefone na tabela
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String tipo;

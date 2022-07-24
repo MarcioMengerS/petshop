@@ -84,8 +84,7 @@ public class HtmlController {
     }
 
     //Método de cadastro de Telefone e mostra detalhes do cliente
-    //@RequestMapping(path="{id}", method = RequestMethod.POST)
-    @RequestMapping(path="{id}", method = RequestMethod.POST)
+    @RequestMapping(path="/{id}", method = RequestMethod.POST)
     public String cadastroTelefonePorId(@PathVariable ("id") Long id, Telefone telefone){
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         telefone.setCliente(clienteOpt.get());
