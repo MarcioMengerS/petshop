@@ -71,7 +71,7 @@ public class HtmlController {
     }
 
     //Método que mostra detalhes do cliente
-    @RequestMapping(path="/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="cliente/{id}", method = RequestMethod.GET)
     public ModelAndView detalhesCliente(@PathVariable ("id") Long id){
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         ModelAndView mv =new ModelAndView("rh/detalhesCliente");
@@ -84,11 +84,13 @@ public class HtmlController {
     }
 
     //Método de cadastro de Telefone e mostra detalhes do cliente
-    @RequestMapping(path="/{id}", method = RequestMethod.POST)
+    @RequestMapping(path="cliente/{id}", method = RequestMethod.POST)
     public String cadastroTelefonePorId(@PathVariable ("id") Long id, Telefone telefone){
+        //Busca cliente pelo id
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
+        //coloca cliente dentro da variavel telefone
         telefone.setCliente(clienteOpt.get());
         tels.salvar(telefone);
-        return "redirect:/{id}";
+        return "redirect:/cliente/{id}";
     }
 }

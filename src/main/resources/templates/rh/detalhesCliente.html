@@ -8,6 +8,7 @@
 </head>
 <body>
     <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a> / <a th:href="@{/rh/clientes}">Lista de Clientes</a><br>
+
     <div th:each="cliente : ${clienteId}" th:object="${cliente}">
         <div class="row">
             <p>Nome: <span th:text="${cliente.getNome()}"></span></p>
@@ -21,7 +22,7 @@
             <button type="submit">Incluir Telefone</button>
         </form>
     </div>
- <!--Tabela que apresenta todos os telefones do cliente específico-->
+ <!--Tabela que apresenta todos os telefones de um cliente específico-->
     <table width="467" border="1px">
         <thead>
             <tr>

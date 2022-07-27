@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -41,4 +43,11 @@ public class Cliente implements Serializable{
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="cliente_id", referencedColumnName = "id")
     private List<Telefone> telefone;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="cliente_animal",
+                joinColumns = {@JoinColumn(name="cliente_id")},
+                inverseJoinColumns = {@JoinColumn(name="animal_id")})
+    private List<Animal> animais;
+
 }

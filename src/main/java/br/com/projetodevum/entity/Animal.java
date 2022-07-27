@@ -1,11 +1,14 @@
 package br.com.projetodevum.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,16 +25,17 @@ import lombok.NoArgsConstructor;
 public class Animal {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String nome;
+    private String nomeAnimal;
     private String raca;
-
-    @Temporal(TemporalType.DATE)
-    private Date dataNasc;
-    
     private boolean genero;
     private String obs;
 
+    @Temporal(TemporalType.DATE)
+    private Date dataNasc;
+
+    @ManyToMany(mappedBy = "animais", cascade= CascadeType.ALL)
+    private List<Cliente> clientes;
 }
