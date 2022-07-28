@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.projetodevum.entity.Animal;
+import br.com.projetodevum.entity.Cliente;
 import br.com.projetodevum.repository.AnimalRepository;
 
 @Service
@@ -38,4 +39,7 @@ public class AnimalService {
     public void removerObj(Animal animal){
         animalRepository.delete(animal);
     }
+    //public Iterable<Animal> buscarAnimClientes(Cliente cliente){
+    //    return animalRepository.findByAnimal(cliente);
+   // }
 }

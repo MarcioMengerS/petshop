@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop Index</title>
+</head>
+<body>
+    <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a> / <a th:href="@{/rh/clientes}">Lista de Clientes</a><br>
+
+    <div th:each="cliente : ${clienteId}" th:object="${cliente}">
+        <div class="row">
+            <p>Nome: <span th:text="${cliente.getNome()}"></span></p>
+            <p>Email: <span th:text="${cliente.getEmail()}"></span></p>
+            <p>CPF: <span th:text="${cliente.getCpf()}"></span></p>
+        </div>
+        <form method="post">
+            Nome:<input type="text" value="" name="nomeAnimal">
+            Raça: <input type="text" value="" name="raca">
+            <button type="submit">Incluir Pet</button>
+        </form>
+    </div>
+ <!--Tabela que apresenta todos os telefones de um cliente específico-->
+    <table width="467" border="1px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RAÇA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="animais:${listaAnimais}">
+                <td th:text="${animais.getId()}"></td>
+                <td th:text="${animais.getRaca()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
