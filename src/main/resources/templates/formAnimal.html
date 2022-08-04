@@ -16,24 +16,26 @@
             <p>CPF: <span th:text="${cliente.getCpf()}"></span></p>
         </div>
         <form method="post">
-            Nome:<input type="text" value="" name="nomeAnimal">
-            Raça: <input type="text" value="" name="raca">
+            Nome:<input type="text" value="" name="nomeAnimal" id="nomeAnimal">
+            Raça: <input type="text" value="" name="raca" id="raca">
             <button type="submit">Incluir Pet</button>
         </form>
     </div>
- <!--Tabela que apresenta todos os telefones de um cliente específico-->
+ <!--Tabela que apresenta todos os Animais de um cliente específico-->
     <table width="467" border="1px">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>RAÇA</th>
+                <th>NOME</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="animais:${listaAnimais}">
+            <!--<tr th:each="animais:${listaAnimais}">
                 <td th:text="${animais.getId()}"></td>
                 <td th:text="${animais.getRaca()}"></td>
-            </tr>
+                <td th:text="${animais.getNomeAnimal()}"></td>
+            </tr>-->
         </tbody>
     </table>
 </body>

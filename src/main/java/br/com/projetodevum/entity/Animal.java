@@ -1,17 +1,17 @@
 package br.com.projetodevum.entity;
 
-import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,20 +22,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table
-public class Animal {
+public class Animal implements Serializable{
+
+    private static final long serialVersionUID =1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     private String nomeAnimal;
     private String raca;
-    private boolean genero;
-    private String obs;
+    //private boolean genero;
+    //private String obs;
 
-    @Temporal(TemporalType.DATE)
-    private Date dataNasc;
+    //@Temporal(TemporalType.DATE)
+    //private Date dataNasc;
 
-    @ManyToMany(mappedBy = "animais", cascade= CascadeType.ALL)
-    private List<Cliente> clientes;
+    @ManyToMany()//fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "animais")
+    //@JoinTable(name="cliente_animal",
+    //            uniqueConstraints = @UniqueConstraint(columnNames = {"animal_id", "cliente_id"}),
+    //            joinColumns = @JoinColumn(name="animal_id"),
+    //            inverseJoinColumns = @JoinColumn(name="cliente_id"))
+    private Set<Cliente> clientes = new HashSet<>();
 }

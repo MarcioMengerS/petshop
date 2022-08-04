@@ -39,7 +39,7 @@
                 <td th:text="${cliente.endereco.cep}"></td>
 
                 <td>
-                    <a th:href="@{/clientes/animal/{id}(id=${cliente.id})}">Pet</a>
+                    <a th:href="@{/pet/animal/{id}(id=${cliente.id})}">Pet</a>
                     <a th:href="@{/rh/clientes/excluir/{id}(id=${cliente.id})}">Excluir</a>
                     <a th:href="@{/rh/clientes/atualizar/{id}(id=${cliente.id})}">Atualizar</a>
                 </td>

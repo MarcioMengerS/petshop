@@ -27,7 +27,6 @@ public class HtmlController {
     private TelefoneService tels;
     
     //Método listar clientes
-    //@RequestMapping(path = "/rh/clientes", method = RequestMethod.GET)
     @GetMapping("/rh/clientes")
     public String listarTodos(Model model){
         model.addAttribute("listaPessoas", cs.listarClientes());
@@ -60,7 +59,6 @@ public class HtmlController {
 
     //Método que exclui cliente
     @GetMapping("/rh/clientes/excluir/{id}")
-    //@DeleteMapping("/rh/clientes/excluir/{id}") - Não aceita o verbo delete
     public String excluir(@PathVariable("id") Long id) {
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         if(clienteOpt.isEmpty()){
@@ -76,7 +74,7 @@ public class HtmlController {
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
         ModelAndView mv =new ModelAndView("rh/detalhesCliente");
         mv.addObject("clienteId", clienteOpt.get());
-        //Busca telefone de um cliente específico
+        //Busca telefone(s) de um cliente específico
         Iterable<Telefone> telefones = tels.buscarTelClientes(clienteOpt.get());
         mv.addObject("listaTelefones", telefones);
 

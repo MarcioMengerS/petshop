@@ -7,16 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.projetodevum.entity.Animal;
-import br.com.projetodevum.entity.Cliente;
 import br.com.projetodevum.repository.AnimalRepository;
 
 @Service
 public class AnimalService {
-    /*Segundo documentação é recomendado criar construtor para o atributo abaixo
-    private final ClienteRepository clienteRepository;
-    puclic ClienteService (ClienteRepository clienteRepository){
-        this.clienteRepository = clienteRepository;
-    }*/
+    
     @Autowired
     private AnimalRepository animalRepository;
 
@@ -31,6 +26,9 @@ public class AnimalService {
     public Optional<Animal> buscarPorId(Long id){
         return animalRepository.findById(id);
     }
+    public Animal buscarAnimalPorId(Long id){
+        return animalRepository.findById(id).get();
+    }
 
     public void removerPorId(Long id){
         animalRepository.deleteById(id);
@@ -39,7 +37,4 @@ public class AnimalService {
     public void removerObj(Animal animal){
         animalRepository.delete(animal);
     }
-    //public Iterable<Animal> buscarAnimClientes(Cliente cliente){
-    //    return animalRepository.findByAnimal(cliente);
-   // }
 }
