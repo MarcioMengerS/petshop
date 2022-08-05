@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petshop Index</title>
+    <title>Formulário Cadastro PET</title>
 </head>
 <body>
     <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a> / <a th:href="@{/rh/clientes}">Lista de Clientes</a><br>
@@ -21,7 +21,7 @@
             <button type="submit">Incluir Pet</button>
         </form>
     </div>
- <!--Tabela que apresenta todos os Animais de um cliente específico-->
+ <!--Tabela mostra todos os Animais de um cliente específico-->
     <table width="467" border="1px">
         <thead>
             <tr>
@@ -31,11 +31,11 @@
             </tr>
         </thead>
         <tbody>
-            <!--<tr th:each="animais:${listaAnimais}">
+            <tr th:each="animais:${listaAnimais}">
                 <td th:text="${animais.getId()}"></td>
                 <td th:text="${animais.getRaca()}"></td>
                 <td th:text="${animais.getNomeAnimal()}"></td>
-            </tr>-->
+            </tr>
         </tbody>
     </table>
 </body>

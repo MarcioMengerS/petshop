@@ -4,34 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Petshop Formulario</title>
 </head>
 <body>
-    <form action="#" th:action="@{/rh/clientes/salvar}" th:object="${cli}" method="POST">
-        <!--Fundamental trazer o id-cliente para atualização-->
+    <h2 class="container container">Cadastro e Atualização</h2>
+    <form class="container mb-5" action="#" th:action="@{/rh/clientes/salvar}" th:object="${cli}" method="POST">
+        <!--Fundamental trazer o id do cliente para atualização-->
         <input type="hidden" id="id" th:field="*{id}"><br>
         <label for="nome">Nome:</label>
         <input type="text" th:field="*{nome}"><br>
-        <label for="nome">email:</label>
-        <input type="text" th:field="*{email}"><br>
-        <label for="nome">CPF:</label>
+        <div class="form-group">
+            <label for="email">email:</label>
+            <input type="email" class="form-control" th:field="*{email}"><br>
+        </div>
+        <label for="cpf">CPF:</label>
         <input type="text" th:field="*{cpf}"><br>
-        <!--Fundamental trazer o id-endereço para atualização-->
+        <!--Fundamental trazer o id do endereço para atualização-->
         <input type="hidden" id="id" th:field="*{endereco.id}"><br>
-        <label for="nome">Endereco:</label>
+        <label for="endereco">Endereco:</label>
         <input type="text" th:field="*{endereco.nomeRua}"><br>
-        <label for="nome">Número:</label>
+        <label for="numero">Número:</label>
         <input type="number" th:field="*{endereco.numero}"><br>
-        <label for="nome">Bairro:</label>
+        <label for="bairro">Bairro:</label>
         <input type="text" th:field="*{endereco.bairro}"><br>
-        <label for="nome">Cidade:</label>
+        <label for="cidade">Cidade:</label>
         <input type="text" th:field="*{endereco.cidade}"><br>
-        <label for="nome">CEP:</label>
+        <label for="cep">CEP:</label>
         <input type="text" th:field="*{endereco.cep}"><br>
 
         <button type="submit">salvar</button>
     </form>
     <br>
     <a th:href="@{/rh/clientes}">Lista de Clientes</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

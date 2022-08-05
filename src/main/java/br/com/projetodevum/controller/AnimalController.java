@@ -1,5 +1,7 @@
 package br.com.projetodevum.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,9 +32,8 @@ public class AnimalController {
         mv.addObject("clienteId", cliente);
 
         //Busca Animais de um cliente específico
-        //List<Animal> animais = as.listarAnimais();
-        //mv.addObject("listaAnimais", animais);
-
+        Set<Animal> animais = cliente.getAnimais();
+        mv.addObject("listaAnimais", animais);
         return mv;
     }
 
