@@ -8,33 +8,51 @@
     <title>Petshop Formulario</title>
 </head>
 <body>
-    <h2 class="container container">Cadastro e Atualização</h2>
-    <form class="container mb-5" action="#" th:action="@{/rh/clientes/salvar}" th:object="${cli}" method="POST">
-        <!--Fundamental trazer o id do cliente para atualização-->
-        <input type="hidden" id="id" th:field="*{id}"><br>
-        <label for="nome">Nome:</label>
-        <input type="text" th:field="*{nome}"><br>
-        <div class="form-group">
-            <label for="email">email:</label>
-            <input type="email" class="form-control" th:field="*{email}"><br>
-        </div>
-        <label for="cpf">CPF:</label>
-        <input type="text" th:field="*{cpf}"><br>
-        <!--Fundamental trazer o id do endereço para atualização-->
-        <input type="hidden" id="id" th:field="*{endereco.id}"><br>
-        <label for="endereco">Endereco:</label>
-        <input type="text" th:field="*{endereco.nomeRua}"><br>
-        <label for="numero">Número:</label>
-        <input type="number" th:field="*{endereco.numero}"><br>
-        <label for="bairro">Bairro:</label>
-        <input type="text" th:field="*{endereco.bairro}"><br>
-        <label for="cidade">Cidade:</label>
-        <input type="text" th:field="*{endereco.cidade}"><br>
-        <label for="cep">CEP:</label>
-        <input type="text" th:field="*{endereco.cep}"><br>
-
-        <button type="submit">salvar</button>
-    </form>
+    <div class="mx-5">
+        <h2 class="mx-5 mt-5">Cadastro e Atualização</h2>
+        
+        <form class="mx-5 px-5 row gy-2 gx-3" th:action="@{/rh/clientes/salvar}" th:object="${cli}" method="POST">
+            <!--Fundamental trazer o id do cliente para atualização-->
+            <input type="hidden" id="id" th:field="*{id}">
+            <div class="col-md-4">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" name="nome" class="form-control" th:field="*{nome}">
+            </div>
+            <div class="col-md-4">
+                <label for="email" class="form-label">email:</label>
+                <input type="email" class="form-control" th:field="*{email}">
+            </div>
+            <div class="col-md-4">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input type="text" class="form-control" th:field="*{cpf}">
+            </div>
+            <!--Fundamental trazer o id do endereço para atualização-->
+            <input type="hidden" id="id" th:field="*{endereco.id}">
+            <div class="col-md-8">
+                <label for="endereco" class="form-label">Endereco:</label>
+                <input type="text" class="form-control" th:field="*{endereco.nomeRua}">
+            </div>
+            <div class="col-md-4">
+                <label for="numero" class="form-label">Número:</label>
+                <input type="number" name="numero" id="numero" class="form-control" th:field="*{endereco.numero}">
+            </div>
+            <div class="col-md-4">
+                <label for="bairro" class="form-label">Bairro:</label>
+                <input type="text" class="form-control" th:field="*{endereco.bairro}"><br>
+            </div>
+            <div class="col-md-4">
+                <label for="cidade" class="form-label">Cidade:</label>
+                <input type="text" class="form-control" th:field="*{endereco.cidade}"><br>
+            </div>
+            <div class="col-md-4">
+                <label for="cep" class="form-label">CEP:</label>
+                <input type="text" class="form-control" th:field="*{endereco.cep}"><br>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary p-3">salvar</button>
+            </div>
+        </form>
+    </div>
     <br>
     <a th:href="@{/rh/clientes}">Lista de Clientes</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

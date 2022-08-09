@@ -1,9 +1,12 @@
 package br.com.projetodevum.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,5 +48,16 @@ public class AnimalController {
         cliente.getAnimais().add(animal);
         cs.salvar(cliente);
         return "redirect:/pet/animal/{id}";
+    }
+    // Método que calcula média de animais por cliente
+    @GetMapping("/pet/media")
+    public String mediaPetCliente(Model model) {
+        model.addAttribute("listaPessoas", cs.listarClientes());
+        List<Cliente> quantosClientes = cs.listarClientes();
+        List<Animal> quantosAnimais = as.listarAnimais();
+        double media = (double) quantosAnimais.size() / (double) quantosClientes.size();
+        String m = String.format("%.2f", media);
+        model.addAttribute("nomeDoAtributo", m);
+        return "rh/form2";
     }
 }
