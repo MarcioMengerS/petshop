@@ -35,7 +35,8 @@ public class AnimalController {
         mv.addObject("clienteId", cliente);
 
         //Busca Animais de um cliente específico
-        Set<Animal> animais = cliente.getAnimais();
+        //Set<Animal> animais = cliente.getAnimais();
+        List<Animal> animais = cliente.getAnimais();
         mv.addObject("listaAnimais", animais);
         return mv;
     }

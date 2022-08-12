@@ -1,6 +1,7 @@
 package br.com.projetodevum.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,6 +52,6 @@ public class Cliente implements Serializable{
     @JoinTable( name="cliente_animal",
                 joinColumns = @JoinColumn(name="cliente_id"),
                 inverseJoinColumns = @JoinColumn(name="animal_id"))
-    private Set<Animal> animais = new HashSet<>();
-
+    //private Set<Animal> animais = new HashSet<>();
+    private List<Animal> animais = new ArrayList<>();
 }
