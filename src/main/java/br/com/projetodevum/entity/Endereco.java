@@ -1,5 +1,7 @@
 package br.com.projetodevum.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table
-public class Endereco {
+public class Endereco implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

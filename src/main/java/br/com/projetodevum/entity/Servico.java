@@ -1,12 +1,11 @@
 package br.com.projetodevum.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Servico {
+public class Servico implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

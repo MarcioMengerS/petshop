@@ -24,7 +24,7 @@ public class ServicoController {
     
     @GetMapping("/inclui/{id_cliente}/{id_animal}")
     @ResponseBody
-    public Cliente registrarServico(@PathVariable ("id_cliente") Long id1, @PathVariable ("id_animal") int id2){
+    public Animal registrarServico(@PathVariable ("id_cliente") Long id1, @PathVariable ("id_animal") int id2){
         List<Animal> lista_animal;
         Animal animal = new Animal();
         Cliente cliente = new Cliente();
@@ -39,7 +39,7 @@ public class ServicoController {
                 servico.setCliente(cliente);
                 servico.setAnimal(animal);
                 ss.salvar(servico);
-                return servico.getCliente();
+                return animal;
             }
         }
         return null;

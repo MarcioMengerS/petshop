@@ -2,9 +2,7 @@ package br.com.projetodevum.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -48,10 +46,9 @@ public class Cliente implements Serializable{
     @JoinColumn(name="cliente_id", referencedColumnName = "id")
     private List<Telefone> telefone;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)//fetch = FetchType.LAZY)
     @JoinTable( name="cliente_animal",
                 joinColumns = @JoinColumn(name="cliente_id"),
                 inverseJoinColumns = @JoinColumn(name="animal_id"))
-    //private Set<Animal> animais = new HashSet<>();
-    private List<Animal> animais = new ArrayList<>();
+    private List<Animal> animais = new ArrayList<Animal>();
 }

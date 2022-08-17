@@ -61,9 +61,9 @@ public class HtmlController {
     @GetMapping("/rh/clientes/excluir/{id}")
     public String excluir(@PathVariable("id") Long id) {
         Optional<Cliente> clienteOpt = cs.buscarPorId(id);
-        if(clienteOpt.isEmpty()){
-            throw new IllegalArgumentException("pessoa não existe");
-        }
+        //if(clienteOpt.isEmpty()){
+        //    throw new IllegalArgumentException("pessoa não existe");
+        //}
         cs.removerObj(clienteOpt.get());
         return "redirect:/rh/clientes";
     }

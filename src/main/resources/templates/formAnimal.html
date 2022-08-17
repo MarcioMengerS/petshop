@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Formulário Cadastro PET</title>
 </head>
-<body>
-    <a th:href="@{/rh/clientes/novo}">Incluir Cliente</a> / <a th:href="@{/rh/clientes}">Lista de Clientes</a><br>
+<body class="mx-5">
+    <nav aria-label="breadcrumb" class="mt-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/rh/clientes/novo}">Incluir Cliente</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/rh/clientes}">Lista de Clientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro PET</li>
+        </ol>
+    </nav>
 
     <div th:each="cliente : ${clienteId}" th:object="${cliente}">
         <div class="row">
-            <p>Nome: <span th:text="${cliente.getNome()}"></span></p>
+            <p>Dono: <span th:text="${cliente.getNome()}"></span></p>
             <p>Email: <span th:text="${cliente.getEmail()}"></span></p>
             <p>CPF: <span th:text="${cliente.getCpf()}"></span></p>
         </div>
@@ -22,9 +29,9 @@
         </form>
     </div>
  <!--Tabela mostra todos os Animais de um cliente específico-->
-    <table width="467" border="1px">
+    <table class="container mt-3 ms-5 table table-bordered border-black table-info" width="10%">
         <thead>
-            <tr>
+            <tr class="table-primary">
                 <th>ID</th>
                 <th>RAÇA</th>
                 <th>NOME</th>
@@ -38,5 +45,6 @@
             </tr>
         </tbody>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
