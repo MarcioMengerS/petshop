@@ -2,9 +2,7 @@ package br.com.projetodevum.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
